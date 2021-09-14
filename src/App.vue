@@ -10,11 +10,8 @@
       @date-string="dariEdd"
       :tarikh="eddDate.date"
     ></satu-kad>
+    <time-travel :lmpDate="lmpDate.date" />
     <result-table :lmpDate="lmpDate" />
-    <div class="card">
-      <p>lmp {{ lmpDate }}</p>
-      <p>edd {{ eddDate }}</p>
-    </div>
   </div>
 </template>
 
@@ -23,9 +20,10 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import SatuKad from "./components/SatuKad.vue";
 import ResultTable from "./ui/ResultTable.vue";
+import TimeTravel from "./ui/TimeTravel.vue";
 
 export default {
-  components: { SatuKad, ResultTable },
+  components: { SatuKad, ResultTable, TimeTravel },
   data() {
     dayjs.locale("my");
     dayjs.extend(localizedFormat);
