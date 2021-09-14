@@ -10,7 +10,7 @@
       @date-string="dariEdd"
       :tarikh="eddDate.date"
     ></satu-kad>
-
+    <result-table :lmpDate="lmpDate" />
     <div class="card">
       <p>lmp {{ lmpDate }}</p>
       <p>edd {{ eddDate }}</p>
@@ -22,9 +22,10 @@
 import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import SatuKad from "./components/SatuKad.vue";
+import ResultTable from "./ui/ResultTable.vue";
 
 export default {
-  components: { SatuKad },
+  components: { SatuKad, ResultTable },
   data() {
     dayjs.locale("my");
     dayjs.extend(localizedFormat);
@@ -32,7 +33,7 @@ export default {
       date: dayjs().format("YYYY-MM-DD"),
     };
     const eddDate = {
-      date: dayjs().format("YYYY-MM-DD"),
+      date: dayjs().add(40, "week").format("YYYY-MM-DD"),
     };
 
     return {
