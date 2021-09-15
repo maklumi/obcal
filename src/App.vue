@@ -10,6 +10,7 @@
       @date-string="dariEdd"
       :tarikh="eddDate.date"
     ></satu-kad>
+    <time-log :lmpDate="lmpDate.date" />
     <time-travel :lmpDate="lmpDate.date" />
     <result-table :lmpDate="lmpDate" />
   </div>
@@ -21,9 +22,10 @@ import localizedFormat from "dayjs/plugin/localizedFormat";
 import SatuKad from "./components/SatuKad.vue";
 import ResultTable from "./ui/ResultTable.vue";
 import TimeTravel from "./ui/TimeTravel.vue";
+import TimeLog from "./ui/TimeLog.vue";
 
 export default {
-  components: { SatuKad, ResultTable, TimeTravel },
+  components: { SatuKad, ResultTable, TimeTravel, TimeLog },
   data() {
     dayjs.locale("my");
     dayjs.extend(localizedFormat);
