@@ -10,7 +10,8 @@
       @date-string="dariEdd"
       :tarikh="eddDate.date"
     ></satu-kad>
-    <time-log :lmpDate="lmpDate.date" />
+    <result-today :lmpDate="lmpDate.date" @week-day="gestation" />
+    <time-log :date="lmpDate.date" :week-day="lmpDate.gestation" />
     <time-travel :lmpDate="lmpDate.date" />
     <result-table :lmpDate="lmpDate" />
   </div>
@@ -21,16 +22,18 @@ import dayjs from "dayjs";
 import localizedFormat from "dayjs/plugin/localizedFormat";
 import SatuKad from "./components/SatuKad.vue";
 import ResultTable from "./ui/ResultTable.vue";
+import ResultToday from "./ui/ResultToday.vue";
 import TimeTravel from "./ui/TimeTravel.vue";
 import TimeLog from "./ui/TimeLog.vue";
 
 export default {
-  components: { SatuKad, ResultTable, TimeTravel, TimeLog },
+  components: { SatuKad, ResultTable, TimeTravel, TimeLog, ResultToday },
   data() {
     dayjs.locale("my");
     dayjs.extend(localizedFormat);
     const lmpDate = {
       date: dayjs().format("YYYY-MM-DD"),
+      gestation: { week: null, day: null },
     };
     const eddDate = {
       date: dayjs().add(40, "week").format("YYYY-MM-DD"),
@@ -58,6 +61,9 @@ export default {
     setWeek0() {
       const tempLmp = dayjs(this.eddDate.date).subtract(40, "week");
       this.lmpDate.date = tempLmp.format("YYYY-MM-DD");
+    },
+    gestation(weekDay) {
+      this.lmpDate.gestation = weekDay;
     },
   },
 };

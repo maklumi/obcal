@@ -9,11 +9,11 @@
           :key="idx"
         >
           <button
-            class="btn btn-outline-primary me-2 position-relative"
+            class="btn btn-outline-primary me-2 d-inline-flex"
             @click="buangBarisan(idx)"
           >
             {{ masaRekod }}
-            <span class="position-absolute top-0 start-100 translate-middle">
+            <span class="ms-2">
               <i class="fas fa-times-circle"></i>
             </span>
           </button>
@@ -33,15 +33,17 @@
 <script>
 import dayjs from "dayjs";
 export default {
-  props: ["lmpDate"],
+  props: ["date", "weekDay"],
   data() {
     const hariIni = dayjs().format("dddd DD-MM-YYYY");
     const masaRekod = dayjs().format("hh:mm");
-    const koleksi = ["23/45/2022"];
+    const koleksi = [];
+    const clocked = dayjs();
     return {
       hariIni,
       masaRekod,
       koleksi,
+      clocked,
     };
   },
   methods: {
@@ -50,9 +52,13 @@ export default {
     },
   },
   watch: {
-    lmpDate(newDate, oldDate) {
-      if (newDate === oldDate) return;
-      this.koleksi.push(newDate);
+    weekDay(wd, old) {
+      if (wd === old) return;
+      const now = dayjs();
+      if (now.diff(this.clocked, "second") < 5) return;
+      this.clocked = now;
+      const teks = "LMP " + this.date + " " + wd.week + "+" + wd.day + "/7";
+      this.koleksi.push(teks);
     },
   },
 };
