@@ -1,19 +1,28 @@
 <template>
-  <div class="container">
-    <satu-kad
-      jenis-tarikh="lmp"
-      @date-string="dariLmp"
-      :tarikh="lmpDate.date"
-    ></satu-kad>
-    <satu-kad
-      jenis-tarikh="due"
-      @date-string="dariEdd"
-      :tarikh="eddDate.date"
-    ></satu-kad>
-    <result-today :lmpDate="lmpDate.date" @week-day="gestation" />
-    <time-log :date="lmpDate.date" :week-day="lmpDate.gestation" />
-    <time-travel :lmpDate="lmpDate.date" />
-    <result-table :lmpDate="lmpDate" />
+  <div class="">
+    <div class="row">
+      <div class="card col">
+        <satu-kad
+          jenis-tarikh="lmp"
+          @date-string="dariLmp"
+          :tarikh="lmpDate.date"
+        ></satu-kad>
+        <satu-kad
+          jenis-tarikh="due"
+          @date-string="dariEdd"
+          :tarikh="eddDate.date"
+        ></satu-kad>
+        <result-today :lmpDate="lmpDate.date" @week-day="gestation" />
+
+        <result-table :lmpDate="lmpDate" />
+        <time-travel :lmpDate="lmpDate.date" />
+      </div>
+      <time-log
+        class="col"
+        :date="lmpDate.date"
+        :week-day="lmpDate.gestation"
+      />
+    </div>
   </div>
 </template>
 

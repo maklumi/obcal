@@ -1,8 +1,8 @@
 <template>
-  <div class="card mb-3">
-    <div class="card-header">Hari ini {{ todayStr }}</div>
+  <div class="card">
     <div class="card-body">
-      <div class="m">
+      <p class="text-center fs-5">Hari ini {{ todayStr }}</p>
+      <div class="">
         <h2 class="d-inline-flex">
           <span class="badge bg-secondary my-auto">{{ gestation.week }} </span>
           <p class="my-auto mx-1">

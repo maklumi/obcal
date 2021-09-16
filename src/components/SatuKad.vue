@@ -1,6 +1,6 @@
 <template>
-  <div class="card mb-3">
-    <fieldset class="card-body">
+  <div class="my-1">
+    <fieldset class="">
       <div class="row gx-0 justify-content-center">
         <label
           class="col-2 col-form-label"

@@ -1,5 +1,5 @@
 <template>
-  <div class="card-body">
+  <div class="card card-header">
     <table class="table table-danger table-striped">
       <tbody>
         <satu-item weekNumber="week 14" :dateValue="dateValues.week14" />
